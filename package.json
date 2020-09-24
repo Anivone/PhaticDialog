@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Anivone/PhaticDialog#readme",
   "dependencies": {
+    "jquery": "^3.5.1",
     "wordpos-web": "^1.0.2"
   }
 }
