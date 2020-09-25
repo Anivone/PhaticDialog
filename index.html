@@ -15,12 +15,14 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+        <script class="cdn" src="/node_modules/wordpos-web/dist/wordpos.min.js"></script>
     <link rel="stylesheet" type="text/css" href="index.css">
 
     <title>Document</title>
 </head>
 
 <body>
+
     <div class="container-fluid main-container h-100">
         <div class="row h-100 align-items-center">
             <div class="chat-container d-flex col-6 mx-auto flex-column">
@@ -28,15 +30,18 @@
 
                 <div class="inner-chat-container d-flex align-self-end flex-column">
 
-                    <div class="message-area d-flex flex-column">
+                    <div class="message-area d-flex justify-content-around">
+                        <div class="bot-msg-area d-flex flex-column "></div>
 
+                        <div class="user-msg-area d-flex flex-column "></div>
+                        
                     </div>
 
-                    <div class="text-input-area d-flex justify-content-around">
+                    <div class="text-input-area d-flex justify-content-between">
                         <mat-form-field class="text-input">
                             <input matInput type="text" class="input" placeholder="Type something..">
                         </mat-form-field>
-                        <img src="send-icon.png" class="send-icon align-self-end my-auto" alt="" srcset="">
+                        <img src="send_icon.png" class="send-icon align-self-end my-auto" alt="" srcset="">
                         <!-- <button> <a href="" class="send-icon"></a></button> -->
                         <!-- <button type="submit" class="btn btn-primary send-button">Send</button> -->
                     </div>
@@ -45,6 +50,8 @@
             </div>
         </div>
     </div>
+            <script src="phrases.js"></script>
+
 </body>
 
 </html>

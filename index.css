@@ -17,8 +17,8 @@ background-color: rgb(128, 2, 247);
 .inner-chat-container {
 height: 98%;
 width: 100%;
-border-radius: 10px;
-background-color: whitesmoke;
+/* border-radius: 10px; */
+background-color: rgb(218, 224, 233);
 }
 
 .chat-title{
@@ -35,10 +35,21 @@ background-color: whitesmoke;
 }
 .input{
     width: 100%;
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
 .send-icon{
  cursor: pointer;
  width: 7%;
- height: 70%;
+ width: 10%;
+ height: 80%;
+}
+.user-msg-area{
+    width: 48%;
+    height: 100%;
+    /* background-color: blueviolet; */
+}
+.bot-msg-area{
+width: 40%;
+height: 100%;
+/* background-color: aqua; */
 }
