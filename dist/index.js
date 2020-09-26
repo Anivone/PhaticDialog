@@ -5,12 +5,7 @@ const wordpos = (window.wordpos = new WordPOS({
 }));
 
 let phraseCounter = {};
-
-const phrases = [
-  "Tell me more about ",
-  "What can you tell me about ",
-  "Please, don`t be so shortspoken",
-];
+const phrases = ["Tell me more about ", "What can you tell me about "];
 
 for (const phrase of phrases) {
   phraseCounter[phrase] = 0;
@@ -33,10 +28,31 @@ let getRandomElem = function (array) {
   return array[index];
 };
 
-let processReply = function (result) {
-  let selectedNoun = result.nouns[result.nouns.length - 1];
+let selectLeastPopular = function () {
+  let minimumKey = getRandomElem(phrases);
+  let minimumValue = phraseCounter[minimumKey];
 
-  return selectedNoun;
+  for (const key in phraseCounter) {
+    if (phraseCounter.hasOwnProperty(key)) {
+      if (phraseCounter[key] < minimumValue) {
+        minimumKey = key;
+      }
+    }
+  }
+
+  phraseCounter[minimumKey]++;
+  return minimumKey;
+};
+
+let processReply = function (result) {
+  let nouns = result.nouns;
+  if (nouns.length === 0) return "Could you rephrase the sentence ?";
+
+  let answer = "";
+  if (nouns.indexOf("I") !== -1) answer = "yourself";
+  else answer = nouns[nouns.length - 1];
+
+  return selectLeastPopular() + ` ${answer}`;
 };
 
 $("#message").on("submit", (event) => {
@@ -47,6 +63,7 @@ $("#message").on("submit", (event) => {
   wordpos.getPOS($("#message-text").val(), (result) => {
     console.log(result);
     $(".replies").append(botMsg(processReply(result)));
+    console.log(phraseCounter);
   });
 
   $("#message-text").val("");
