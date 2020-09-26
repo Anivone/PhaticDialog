@@ -42,17 +42,10 @@ background-color: rgb(218, 224, 233);
 .input:focus{
     outline: none;
 }
-/* .send-icon{
- cursor: pointer;
- width: 7%;
- width: 10%;
- height: 80%;
-} */
 
 .message-area{
     border-bottom: 1px solid rgb(175, 175, 175);
     height: 80%;
-    overflow-y: scroll;
 }
 
 .user-msg{
