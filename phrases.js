@@ -75,19 +75,20 @@ let botMsg = function (msg) {
   return `<div class="msg bot-msg align-self-start"> ${msg} </div>`;
 };
 
-  $(document).on('submit',$(".send-button"),function (event) {
-    let text = $(".input").val();
-    if (text != "") {
-      $(".message-area").append(userMsg(text));
-      let usr = $(".input").val();
-      
-      wordpos.getPOS(usr, (result) => {
-        console.log(typeof usr);
-        $(".message-area").append(botMsg(processReply(result)));
-        console.log("result ", result);
-        console.log("counter ", phraseCounter);
-          $(".input").val("");
-      });
-    }
-    return false;
+$(document).on("submit", $(".send-button"), function (event) {
+  let text = $(".input").val();
+  if (text != "") {
+    $(".message-area").append(userMsg(text));
+    let usr = $(".input").val();
+    usr = usr.charAt(0).toLocaleUpperCase() + usr.slice(1);
+
+    wordpos.getPOS(usr, (result) => {
+      console.log(typeof usr);
+      $(".message-area").append(botMsg(processReply(result)));
+      console.log("result ", result);
+      console.log("counter ", phraseCounter);
+      $(".input").val("");
+    });
+  }
+  return false;
 });
