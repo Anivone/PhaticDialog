@@ -18,7 +18,6 @@ color:white;
 .inner-chat-container {
 height: 98%;
 width: 100%;
-/* border-radius: 10px; */
 background-color: rgb(218, 224, 233);
 }
 
@@ -32,24 +31,23 @@ background-color: rgb(218, 224, 233);
 }
 
 .text-input{
-    width: 90%;
+    width: 100%;
 }
 .input{
-    width: 100%;
+    width: 90%;
     background-color: inherit;
     border :0;
     outline: none;
-    /* border-radius: 10px; */
 }
 .input:focus{
     outline: none;
 }
-.send-icon{
+/* .send-icon{
  cursor: pointer;
  width: 7%;
  width: 10%;
  height: 80%;
-}
+} */
 
 .message-area{
     border-bottom: 1px solid rgb(175, 175, 175);
@@ -60,7 +58,9 @@ background-color: rgb(218, 224, 233);
 .user-msg{
     max-width: 45%;
     color: white;
-    text-align: center;
+    text-align: left;
+    padding-right: 10px;
+    padding-left: 10px;
     background-color: rgb(23, 56, 241);
     border-radius: 8px;
     margin-bottom: 10px;
@@ -72,10 +72,19 @@ background-color: rgb(218, 224, 233);
 .bot-msg{
     max-width: 45%;
     color: white;
-    text-align: center;
+    padding-right: 10px;
+    padding-left: 10px;
     background-color: rgb(5, 13, 56);
     border-radius: 8px;
     margin-bottom: 10px;
     margin-left: 15px;
     height: auto;
+}
+.send-button{
+    background-color: inherit;
+    background-image:url("send_icon.png");
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
+    width: 10%;
+    height: 90%;
 }

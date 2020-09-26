@@ -76,8 +76,9 @@ let botMsg = function (msg) {
 };
 
 $(document).ready(function () {
-  $(".send-icon").click(function () {
+  $(".send-button").on('submit',function (event) {
     //user message
+    event.preventDefault();
     let text = $(".input").val();
     if (text != "") {
       $(".message-area").append(userMsg(text));
@@ -89,16 +90,9 @@ $(document).ready(function () {
         console.log("result ", result);
         console.log("counter ", phraseCounter);
       });
-
-      let userM = $(".user-msg").last();
-      let userMSgLength = $(".user-msg").last().width() + 20 + "px";
-      userM.css("width", userMSgLength);
-      $(".input").val("");
-
-      //bot message
-      let botM = $(".bot-msg").last();
-      let botMSgLength = $(".bot-msg").last().width() + 20 + "px";
-      botM.css("width", botMSgLength);
+    //   $(".input").val(""););
     }
-  });
+    
+    return false;
+});
 });
