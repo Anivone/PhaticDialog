@@ -75,24 +75,19 @@ let botMsg = function (msg) {
   return `<div class="msg bot-msg align-self-start"> ${msg} </div>`;
 };
 
-$(document).ready(function () {
-  $(".send-button").on('submit',function (event) {
-    //user message
-    event.preventDefault();
+  $(document).on('submit',$(".send-button"),function (event) {
     let text = $(".input").val();
     if (text != "") {
       $(".message-area").append(userMsg(text));
       let usr = $(".input").val();
-      // console.log(usr.length);
+      
       wordpos.getPOS(usr, (result) => {
         console.log(typeof usr);
         $(".message-area").append(botMsg(processReply(result)));
         console.log("result ", result);
         console.log("counter ", phraseCounter);
+          $(".input").val("");
       });
-    //   $(".input").val(""););
     }
-    
     return false;
-});
 });
