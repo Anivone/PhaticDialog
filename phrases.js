@@ -3,6 +3,8 @@ const wordpos = (window.wordpos = new WordPOS({
     profile: true,
     debug: true,
 }));
+let phraseCounter = {};
+
 const phrases = ["Let's talk more about ", "What else you like to do  ",
     "Tell me more about ", "What do you think about ", "What else you can tell me ",
     "I also like ", "Are you a good specialist in ", "Can you rephrase your question?",
@@ -15,6 +17,39 @@ wordpos.getNouns('this is lately a likely tricky business this is')
     .then(res => {
         console.log(res); // ["lately", "likely"]
     });
+
+let getRandomElem = function (array) {
+    let index = Math.floor(Math.random() * array.length);
+    return array[index];
+};
+
+let selectLeastPopular = function () {
+    let minimumKey = getRandomElem(phrases);
+    let minimumValue = phraseCounter[minimumKey];
+
+    for (const key in phraseCounter) {
+        if (phraseCounter.hasOwnProperty(key)) {
+            if (phraseCounter[key] < minimumValue) {
+                minimumKey = key;
+            }
+        }
+    }
+
+    phraseCounter[minimumKey]++;
+    return minimumKey;
+};
+
+let processReply = function (result) {
+    let nouns = result.nouns;
+    if (nouns.length === 0) return "Could you rephrase the sentence ?";
+
+    let answer = "";
+    if (nouns.indexOf("I") !== -1) answer = "yourself";
+    else answer = nouns[nouns.length - 1];
+
+    return selectLeastPopular() + ` ${answer}`;
+};
+
 
 let userMsg = function (msg) {
     return `<div class="msg user-msg align-self-end">${msg}</div>`;
@@ -29,7 +64,12 @@ $(document).ready(function () {
         let text = $(".input").val();
         if (text != "") {
             $(".message-area").append(userMsg(text));
-            $(".message-area").append(botMsg("Hi man!"));
+            let usr = $(".input").val();
+            // console.log(usr.length);
+            wordpos.getPOS(usr, (result) => {
+            console.log(typeof usr)
+            $(".message-area").append(botMsg(processReply(result)));
+            });
 
             let userM = $(".user-msg").last();
         let userMSgLength = $(".user-msg").last().width() + 20 + 'px';
