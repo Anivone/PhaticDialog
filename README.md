@@ -1,4 +1,5 @@
 ﻿# PhaticDialog
+https://github.com/Anivone/PhaticDialog/
 
 ### Instructions on how to install and use:  
   In your terminal navigate to the desired folder and use these commands:
