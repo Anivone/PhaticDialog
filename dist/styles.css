@@ -1,0 +1,16 @@
+#message-button {
+  width: 30px;
+  height: 30px;
+}
+
+.replies {
+  width: 25vw;
+}
+
+.user-message {
+  background-color: rgb(215, 255, 255);
+}
+
+.bot-message {
+  background-color: rgb(168, 250, 250);
+}
