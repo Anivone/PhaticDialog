@@ -19,5 +19,6 @@
   "dependencies": {
     "jquery": "^3.5.1",
     "wordpos-web": "^1.0.2"
-  }
+  },
+  "devDependencies": {}
 }
